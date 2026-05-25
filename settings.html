@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Settings | AI Mastery Kickstart Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar (Administrative Panel) -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>Parv Infosoft Panel</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link-item">Website</a>
+        <a href="admin.html" class="nav-link-item">Admin Dashboard</a>
+        <a href="settings.html" class="nav-link-item active">Settings</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Toast Holder Container -->
+  <div class="toast-container" id="toast-holder"></div>
+
+  <!-- Settings View Container -->
+  <main id="settings-view" class="container">
+    <div class="dashboard-header" style="margin-top: 5rem;">
+      <div>
+        <h1 class="gradient-text" style="font-size: 2.5rem; font-weight: 800;">Integration Settings</h1>
+        <p>Connect your landing page to Google Sheets & automate confirmation emails using Google Apps Script</p>
+      </div>
+      <div>
+        <a href="admin.html" class="btn-secondary">➔ View Registrations</a>
+      </div>
+    </div>
+
+    <div class="settings-grid">
+      <!-- Left side: Configuration Forms -->
+      <div>
+        <div class="settings-card glass">
+          <h3><span>⚙️</span> API & Webhook Configuration</h3>
+          <form id="settings-form" class="settings-form">
+            
+            <div class="form-field">
+              <label for="set-webhook-url">Google Apps Script Webhook URL</label>
+              <input type="url" id="set-webhook-url" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+              <p style="font-size: 0.8rem; margin-top: 0.2rem;">This URL will receive the POST requests whenever a user registers.</p>
+            </div>
+
+            <div class="form-field">
+              <label for="set-sheet-id">Google Spreadsheet ID (Optional Reference)</label>
+              <input type="text" id="set-sheet-id" placeholder="1aBcD...eFghIjK">
+              <p style="font-size: 0.8rem; margin-top: 0.2rem;">The unique ID from your Google Spreadsheet URL (helps you identify your sheet).</p>
+            </div>
+
+            <div class="form-field">
+              <label for="set-sender-email">Sender Email Configuration</label>
+              <input type="email" id="set-sender-email" placeholder="parvinfosoftadmin@gmail.com" value="parvinfosoftadmin@gmail.com" readonly style="background: rgba(255,255,255,0.02); color: var(--text-muted); cursor: not-allowed;">
+              <p style="font-size: 0.8rem; margin-top: 0.2rem;">The default email from which confirmation notifications are dispatched.</p>
+            </div>
+
+            <button type="submit" class="btn-submit" style="margin-top: 1rem;">Save Integration Settings</button>
+          </form>
+        </div>
+
+        <div class="settings-card glass">
+          <h3><span>🔧</span> Testing Integration Connection</h3>
+          <p style="margin-bottom: 1.5rem;">Once you save a Webhook URL, you can trigger a mock registration submission to test the sheet mapping and email script.</p>
+          <button id="btn-test-webhook" class="btn-primary-sm" style="padding: 0.75rem 1.5rem; width: 100%;">Send Mock Test Webhook Payload</button>
+        </div>
+      </div>
+
+      <!-- Right side: Apps Script Copyable Code -->
+      <div>
+        <div class="settings-card glass" style="padding: 2rem;">
+          <h3><span>📜</span> Google Apps Script Code</h3>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">Copy this script and deploy it as a <strong>Web App</strong> in your Google Sheet (Extensions ➔ Apps Script). Set access to <strong>"Anyone"</strong>.</p>
+          
+          <div class="code-block-wrapper">
+            <div class="code-block-header">
+              <span>Code.gs</span>
+              <button class="btn-copy" id="btn-copy-script">Copy Code</button>
+            </div>
+            <pre class="code-block" id="apps-script-code-text">function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var timestamp = new Date();
+    
+    // Open the active spreadsheet
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName("AI Masterclass Registrations");
+    
+    // Create sheet if it does not exist
+    if (!sheet) {
+      sheet = ss.insertSheet("AI Masterclass Registrations");
+      sheet.appendRow([
+        "Timestamp", 
+        "Name", 
+        "Email", 
+        "Mobile", 
+        "Profession", 
+        "City", 
+        "Goal", 
+        "Source"
+      ]);
+      // Format headers bold
+      sheet.getRange(1, 1, 1, 8).setFontWeight("bold");
+    }
+    
+    // Append the user details
+    sheet.appendRow([
+      timestamp,
+      data.name,
+      data.email,
+      data.mobile,
+      data.profession,
+      data.city || "",
+      data.goal || "",
+      data.source || "Landing Page"
+    ]);
+    
+    // Send Premium HTML Confirmation Email
+    var subject = "🚀 Your Seat Is Confirmed - AI Mastery Kickstart";
+    
+    var htmlBody = 
+      "&lt;div style=\"background-color: #f1f5f9; padding: 40px 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\"&gt;" +
+        "&lt;div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);\"&gt;" +
+          // Header Banner
+          "&lt;div style=\"background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); padding: 35px 30px; text-align: center; color: #ffffff;\"&gt;" +
+            "&lt;h1 style=\"margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;\"&gt;AI Mastery Kickstart&lt;/h1&gt;" +
+            "&lt;p style=\"margin: 8px 0 0 0; opacity: 0.9; font-size: 15px;\"&gt;Your First Step Into The Future With AI&lt;/p&gt;" +
+          "&lt;/div&gt;" +
+          // Email Body
+          "&lt;div style=\"padding: 40px 30px; color: #334155; line-height: 1.7; font-size: 15px;\"&gt;" +
+            "&lt;p style=\"margin-top: 0;\"&gt;Hi &lt;strong&gt;" + data.name + "&lt;/strong&gt;,&lt;/p&gt;" +
+            "&lt;p&gt;Thank you for registering for Parv Infosoft's &lt;strong style=\"color: #3b82f6;\"&gt;FREE 2-Day AI Masterclass&lt;/strong&gt;. Your registration has been successfully confirmed!&lt;/p&gt;" +
+            
+            // Event Details Box
+            "&lt;div style=\"background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 25px 0;\"&gt;" +
+              "&lt;h3 style=\"margin-top: 0; margin-bottom: 12px; color: #0f172a; font-size: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;\"&gt;🗓️ Event Logistics&lt;/h3&gt;" +
+              "&lt;table style=\"width: 100%; font-size: 14px; border-collapse: collapse;\"&gt;" +
+                "&lt;tr&gt;&lt;td style=\"padding: 4px 0; font-weight: bold; width: 100px;\"&gt;Dates:&lt;/td&gt;&lt;td&gt;30 May 2026 (Sat) &amp;amp; 31 May 2026 (Sun)&lt;/td&gt;&lt;/tr&gt;" +
+                "&lt;tr&gt;&lt;td style=\"padding: 4px 0; font-weight: bold;\"&gt;Time:&lt;/td&gt;&lt;td&gt;3:00 PM – 4:00 PM IST&lt;/td&gt;&lt;/tr&gt;" +
+                "&lt;tr&gt;&lt;td style=\"padding: 4px 0; font-weight: bold;\"&gt;Platform:&lt;/td&gt;&lt;td&gt;Google Meet&lt;/td&gt;&lt;/tr&gt;" +
+                "&lt;tr&gt;&lt;td style=\"padding: 4px 0; font-weight: bold;\"&gt;Meet Code:&lt;/td&gt;&lt;td style=\"font-family: monospace; font-weight: bold; color: #8b5cf6;\"&gt;dyt-syon-hva&lt;/td&gt;&lt;/tr&gt;" +
+              "&lt;/table&gt;" +
+              
+              "&lt;div style=\"text-align: center; margin-top: 18px;\"&gt;" +
+                "&lt;a href=\"https://meet.google.com/dyt-syon-hva\" style=\"background-color: #3b82f6; color: #ffffff; text-decoration: none; padding: 10px 22px; border-radius: 6px; font-weight: bold; font-size: 14px; display: inline-block; box-shadow: 0 4px 10px rgba(59,130,246,0.3);\"&gt;Join Google Meet Room&lt;/a&gt;" +
+              "&lt;/div&gt;" +
+            "&lt;/div&gt;" +
+            
+            // Learning Grid
+            "&lt;p style=\"font-weight: bold; color: #0f172a; margin-top: 25px;\"&gt;Here is what we will cover:&lt;/p&gt;" +
+            "&lt;table style=\"width: 100%; border-collapse: collapse; font-size: 14px;\"&gt;" +
+              "&lt;tr&gt;&lt;td style=\"padding: 6px 0; width: 25px; color: #10b981; font-weight: bold;\"&gt;✓&lt;/td&gt;&lt;td&gt;AI Fundamentals (demystified without jargon)&lt;/td&gt;&lt;/tr&gt;" +
+              "&lt;tr&gt;&lt;td style=\"padding: 6px 0; color: #10b981; font-weight: bold;\"&gt;✓&lt;/td&gt;&lt;td&gt;Practical everyday AI tools to speed up output&lt;/td&gt;&lt;/tr&gt;" +
+              "&lt;tr&gt;&lt;td style=\"padding: 6px 0; color: #10b981; font-weight: bold;\"&gt;✓&lt;/td&gt;&lt;td&gt;Better prompting techniques for ChatGPT&lt;/td&gt;&lt;/tr&gt;" +
+              "&lt;tr&gt;&lt;td style=\"padding: 6px 0; color: #10b981; font-weight: bold;\"&gt;✓&lt;/td&gt;&lt;td&gt;Workflow automation strategies and AI agents&lt;/td&gt;&lt;/tr&gt;" +
+              "&lt;tr&gt;&lt;td style=\"padding: 6px 0; color: #10b981; font-weight: bold;\"&gt;✓&lt;/td&gt;&lt;td&gt;Futuristic career opportunities and pathways&lt;/td&gt;&lt;/tr&gt;" +
+              "&lt;tr&gt;&lt;td style=\"padding: 6px 0; color: #10b981; font-weight: bold;\"&gt;✓&lt;/td&gt;&lt;td&gt;A step-by-step roadmap to become AI-skilled in 2026&lt;/td&gt;&lt;/tr&gt;" +
+            "&lt;/table&gt;" +
+            
+            "&lt;p style=\"margin-top: 25px;\"&gt;Please save this confirmation email and join the Google Meet link 5 minutes before the session begins.&lt;/p&gt;" +
+            "&lt;p&gt;We look forward to seeing you there!&lt;/p&gt;" +
+            
+            // Signoff
+            "&lt;div style=\"border-top: 1px solid #e2e8f0; margin-top: 30px; padding-top: 20px; font-size: 14px; color: #64748b;\"&gt;" +
+              "Regards,&lt;br&gt;" +
+              "&lt;strong style=\"color: #0f172a;\"&gt;Team Parv Infosoft&lt;/strong&gt;&lt;br&gt;" +
+              "&lt;a href=\"mailto:parvinfosoftadmin@gmail.com\" style=\"color: #3b82f6; text-decoration: none;\"&gt;parvinfosoftadmin@gmail.com&lt;/a&gt;&lt;br&gt;" +
+              "&lt;span style=\"font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase;\"&gt;🚀 Learn. Grow. Lead With AI.&lt;/span&gt;" +
+            "&lt;/div&gt;" +
+          "&lt;/div&gt;" +
+        "&lt;/div&gt;" +
+      "&lt;/div&gt;";
+      
+    // Send email using MailApp with htmlBody
+    MailApp.sendEmail({
+      to: data.email,
+      subject: subject,
+      htmlBody: htmlBody,
+      name: "Team Parv Infosoft",
+      replyTo: "parvinfosoftadmin@gmail.com"
+    });
+    
+    return ContentService.createTextOutput(
+      JSON.stringify({ status: "success", message: "Recorded successfully" })
+    ).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch(error) {
+    return ContentService.createTextOutput(
+      JSON.stringify({ status: "error", message: error.toString() })
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+}</pre>
+          </div>
+
+          <h4 style="color: var(--teal); font-size: 0.95rem; margin-top: 1.5rem; margin-bottom: 0.5rem;">Implementation Guide:</h4>
+          <ol class="step-list">
+            <li>Open your Google Sheet, click <strong>Extensions ➔ Apps Script</strong>.</li>
+            <li>Delete any default code, paste this copied script, and click the <strong>Save (Floppy Icon)</strong>.</li>
+            <li>Click <strong>Deploy ➔ New Deployment</strong> (top right).</li>
+            <li>Click the Gear icon, select <strong>"Web App"</strong>.</li>
+            <li>Configure:
+              <ul>
+                <li>Execute As: <strong>Me (your gmail)</strong></li>
+                <li>Who has access: <strong>Anyone</strong></li>
+              </ul>
+            </li>
+            <li>Click <strong>Deploy</strong>, copy the **Web App URL**, and update it in your settings form.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-main);">AI Mastery Panel</span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Parv Infosoft. All rights reserved. | ⚙️ Integrations & Automation Portal
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('settings-form');
+      const webhookInput = document.getElementById('set-webhook-url');
+      const sheetInput = document.getElementById('set-sheet-id');
+      const toastHolder = document.getElementById('toast-holder');
+      const copyBtn = document.getElementById('btn-copy-script');
+      const scriptText = document.getElementById('apps-script-code-text');
+      const testBtn = document.getElementById('btn-test-webhook');
+
+      // Load Settings from localStorage
+      webhookInput.value = localStorage.getItem('masterclass_webhook') || 'https://script.google.com/macros/s/AKfycbxMDYwfmY1PICsoWBT3rXEWmcucq80OWbUVWDNKLS-N7_b-5i4pFxhJ8n2WmzNiuQWVkA/exec';
+      sheetInput.value = localStorage.getItem('masterclass_sheet_id') || '';
+
+      // Toast Generator
+      function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        
+        let emoji = '✓';
+        if (type === 'error') emoji = '❌';
+        if (type === 'warning') emoji = '⚠️';
+        
+        toast.innerHTML = `<span>${emoji}</span> <div>${message}</div>`;
+        toastHolder.appendChild(toast);
+        
+        setTimeout(() => {
+          toast.classList.add('fade-out');
+          setTimeout(() => toast.remove(), 300);
+        }, 4000);
+      }
+
+      // Save Settings Form
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const webhookVal = webhookInput.value.trim();
+        const sheetVal = sheetInput.value.trim();
+
+        localStorage.setItem('masterclass_webhook', webhookVal);
+        localStorage.setItem('masterclass_sheet_id', sheetVal);
+        
+        showToast('Settings saved successfully!');
+      });
+
+      // Copy Apps Script Code to Clipboard
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(scriptText.innerText).then(() => {
+          showToast('Apps Script code copied to clipboard!');
+        }).catch(err => {
+          showToast('Failed to copy code.', 'error');
+        });
+      });
+
+      // Test webhook trigger
+      testBtn.addEventListener('click', () => {
+        const webhookVal = webhookInput.value.trim();
+        if (!webhookVal) {
+          showToast('Please configure and save a Webhook URL first!', 'warning');
+          return;
+        }
+
+        showToast('Sending test payload...', 'warning');
+
+        const dummyData = {
+          name: 'Integration Tester',
+          email: 'parvinfosoftadmin@gmail.com',
+          mobile: '9999988888',
+          profession: 'QA Tester',
+          city: 'Mumbai',
+          goal: 'Productivity',
+          source: 'Webhook Test Trigger'
+        };
+
+        fetch(webhookVal, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dummyData)
+        })
+        .then(() => {
+          showToast('Test payload posted! Check your spreadsheet and Gmail logs.', 'success');
+        })
+        .catch(err => {
+          showToast('Webhook failed to send: ' + err.toString(), 'error');
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>

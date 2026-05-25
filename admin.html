@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | AI Mastery Kickstart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar (Administrative Panel) -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>Parv Infosoft Panel</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link-item">Website</a>
+        <a href="admin.html" class="nav-link-item active">Admin Dashboard</a>
+        <a href="settings.html" class="nav-link-item">Settings</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-holder"></div>
+
+  <!-- Dashboard Container -->
+  <main id="admin-view" class="container">
+    
+    <!-- Top Action Row -->
+    <div class="dashboard-header" style="margin-top: 5rem;">
+      <div>
+        <h1 class="gradient-text" style="font-size: 2.5rem; font-weight: 800;">Admin Dashboard</h1>
+        <p>Monitor registrations, check conversion leads, and export candidate data sheets</p>
+      </div>
+      <div class="action-buttons">
+        <button id="btn-export-csv" class="btn-primary-sm">📥 Export CSV Sheet</button>
+        <a href="settings.html" class="btn-secondary">⚙️ Integration Settings</a>
+      </div>
+    </div>
+
+    <!-- KPIs Metric Grid -->
+    <div class="kpi-grid">
+      <!-- Total Registrations Card -->
+      <div class="kpi-card glass">
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-content">
+          <h3 id="stat-total">0</h3>
+          <p>Total Registrations</p>
+        </div>
+      </div>
+      <!-- Today's Registrations Card -->
+      <div class="kpi-card glass green-kpi">
+        <div class="kpi-icon">📅</div>
+        <div class="kpi-content">
+          <h3 id="stat-today">0</h3>
+          <p>Today's Signups</p>
+        </div>
+      </div>
+      <!-- Total Emails Card -->
+      <div class="kpi-card glass purple-kpi">
+        <div class="kpi-icon">✉️</div>
+        <div class="kpi-content">
+          <h3 id="stat-emails">0</h3>
+          <p>Unique Emails</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Table Container -->
+    <div class="filter-bar">
+      <div class="search-input-wrapper">
+        <input type="text" id="admin-search-bar" placeholder="Search by name, email, profession, city, or goal...">
+      </div>
+      <div class="action-buttons">
+        <button id="btn-clear-db" class="btn-secondary" style="border-color: rgba(239, 68, 68, 0.2); color: #f87171;">🗑️ Reset Data</button>
+      </div>
+    </div>
+
+    <!-- Database Table Wrapper -->
+    <div class="table-responsive">
+      <table class="dashboard-table" id="reg-table">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Profession</th>
+            <th>City</th>
+            <th>Primary Goal</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Populated dynamically via JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-main);">AI Mastery Panel</span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Parv Infosoft. All rights reserved. | 📊 Data Management Console
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchBar = document.getElementById('admin-search-bar');
+      const tableBody = document.getElementById('table-body');
+      const totalEl = document.getElementById('stat-total');
+      const todayEl = document.getElementById('stat-today');
+      const emailsEl = document.getElementById('stat-emails');
+      const exportBtn = document.getElementById('btn-export-csv');
+      const clearBtn = document.getElementById('btn-clear-db');
+      const toastHolder = document.getElementById('toast-holder');
+
+      // Seed mock data if localStorage is empty
+      const defaultMockData = [
+        {
+          timestamp: new Date(Date.now() - 3600000 * 24).toISOString(), // Yesterday
+          name: 'Aarav Mehta',
+          email: 'aarav.mehta@gmail.com',
+          mobile: '9820012345',
+          profession: 'Freelance Copywriter',
+          city: 'Mumbai',
+          goal: 'Freelancing',
+          source: 'Landing Page'
+        },
+        {
+          timestamp: new Date().toISOString(), // Today
+          name: 'Priyanka Sharma',
+          email: 'priyanka.sharma@yahoo.com',
+          mobile: '9312054321',
+          profession: 'MBA Student',
+          city: 'Delhi',
+          goal: 'Career Growth',
+          source: 'Facebook Ad'
+        },
+        {
+          timestamp: new Date().toISOString(), // Today
+          name: 'Vikram Singh',
+          email: 'vikram.singh@outlook.com',
+          mobile: '9920158900',
+          profession: 'Digital Agency Owner',
+          city: 'Bangalore',
+          goal: 'Business Growth',
+          source: 'Landing Page'
+        }
+      ];
+
+      function getRegistrations() {
+        const stored = localStorage.getItem('masterclass_registrations');
+        if (!stored) {
+          localStorage.setItem('masterclass_registrations', JSON.stringify(defaultMockData));
+          return defaultMockData;
+        }
+        return JSON.parse(stored);
+      }
+
+      function saveRegistrations(data) {
+        localStorage.setItem('masterclass_registrations', JSON.stringify(data));
+      }
+
+      // Toast Notification System
+      function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        
+        let emoji = '✓';
+        if (type === 'error') emoji = '❌';
+        
+        toast.innerHTML = `<span>${emoji}</span> <div>${message}</div>`;
+        toastHolder.appendChild(toast);
+        
+        setTimeout(() => {
+          toast.classList.add('fade-out');
+          setTimeout(() => toast.remove(), 300);
+        }, 4000);
+      }
+
+      // Render dashboard metrics and rows
+      function renderDashboard() {
+        const regs = getRegistrations();
+        const searchQuery = searchBar.value.toLowerCase().trim();
+
+        // Calculate KPIs
+        const total = regs.length;
+        const todayStr = new Date().toDateString();
+        const todayCount = regs.filter(r => new Date(r.timestamp).toDateString() === todayStr).length;
+        const uniqueEmails = new Set(regs.map(r => r.email.toLowerCase().trim())).size;
+
+        totalEl.innerText = total;
+        todayEl.innerText = todayCount;
+        emailsEl.innerText = uniqueEmails;
+
+        // Filter registrations
+        const filtered = regs.filter(r => {
+          return (
+            r.name.toLowerCase().includes(searchQuery) ||
+            r.email.toLowerCase().includes(searchQuery) ||
+            r.mobile.includes(searchQuery) ||
+            r.profession.toLowerCase().includes(searchQuery) ||
+            (r.city && r.city.toLowerCase().includes(searchQuery)) ||
+            (r.goal && r.goal.toLowerCase().includes(searchQuery)) ||
+            (r.source && r.source.toLowerCase().includes(searchQuery))
+          );
+        });
+
+        tableBody.innerHTML = '';
+
+        if (filtered.length === 0) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="8" class="empty-table-state">
+                <span class="emoji">📭</span>
+                <h4>No Registrations Found</h4>
+                <p>Try refining your search keyword.</p>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        filtered.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        filtered.forEach(r => {
+          const date = new Date(r.timestamp);
+          const formattedDate = date.toLocaleDateString('en-IN', {
+            day: '2-digit', month: 'short', year: 'numeric'
+          }) + ' ' + date.toLocaleTimeString('en-IN', {
+            hour: '2-digit', minute: '2-digit'
+          });
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong style="color: var(--teal); font-size: 0.85rem;">${formattedDate}</strong></td>
+            <td><strong>${escapeHtml(r.name)}</strong></td>
+            <td><span style="color: var(--text-muted); font-size: 0.9rem;">${escapeHtml(r.email)}</span></td>
+            <td><code style="font-family: monospace; font-size: 0.9rem; color: #a78bfa;">${escapeHtml(r.mobile)}</code></td>
+            <td><span style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.85rem;">${escapeHtml(r.profession)}</span></td>
+            <td>${escapeHtml(r.city || '-')}</td>
+            <td><span style="color: #60a5fa; font-weight: 500;">${escapeHtml(r.goal || '-')}</span></td>
+            <td><span style="font-size: 0.85rem; font-style: italic; color: #2dd4bf;">${escapeHtml(r.source || 'Landing Page')}</span></td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      searchBar.addEventListener('input', renderDashboard);
+
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to reset all registrations to default mock values?')) {
+          localStorage.removeItem('masterclass_registrations');
+          renderDashboard();
+          showToast('Database reset to mock templates.');
+        }
+      });
+
+      exportBtn.addEventListener('click', () => {
+        const regs = getRegistrations();
+        if (regs.length === 0) {
+          showToast('No records available to export.', 'error');
+          return;
+        }
+
+        let csvContent = '\uFEFF';
+        csvContent += 'Timestamp,Name,Email,Mobile,Profession,City,Goal,Source\r\n';
+
+        regs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        regs.forEach(r => {
+          const row = [
+            r.timestamp,
+            `"${r.name.replace(/"/g, '""')}"`,
+            `"${r.email.replace(/"/g, '""')}"`,
+            `"${r.mobile.replace(/"/g, '""')}"`,
+            `"${r.profession.replace(/"/g, '""')}"`,
+            `"${(r.city || '').replace(/"/g, '""')}"`,
+            `"${(r.goal || '').replace(/"/g, '""')}"`,
+            `"${(r.source || '').replace(/"/g, '""')}"`
+          ];
+          csvContent += row.join(',') + '\r\n';
+        });
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', `AI_Masterclass_Registrations_${new Date().toISOString().slice(0,10)}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast('CSV compilation downloaded successfully!');
+      });
+
+      renderDashboard();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ea8de" />
+      <stop offset="100%" stop-color="#1e6091" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#113f67" />
+      <stop offset="100%" stop-color="#184e77" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main Outer Circle -->
+  <circle cx="250" cy="250" r="230" fill="none" stroke="#113f67" stroke-width="6" />
+
+  <!-- Left Side: Stylized Circle and 'P' Icon -->
+  <g transform="translate(10, 0)">
+    <!-- Outer concentric ring segment -->
+    <path d="M 120 180 A 60 60 0 1 0 120 320" fill="none" stroke="#113f67" stroke-width="3" stroke-linecap="round" />
+    <path d="M 125 160 A 85 85 0 1 0 125 340" fill="none" stroke="#113f67" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- Stylized P -->
+    <!-- Draw the solid P with linear gradient -->
+    <path d="M 120 190 
+             L 100 190 
+             C 75 190, 75 220, 75 230 
+             L 75 300 
+             L 95 300 
+             L 95 255 
+             L 115 255 
+             C 135 255, 140 245, 140 220 
+             C 140 195, 135 190, 120 190 Z
+             M 95 210 
+             L 115 210 
+             C 122 210, 124 215, 124 222 
+             C 124 230, 122 235, 115 235 
+             L 95 235 Z" 
+          fill="url(#pGrad)" />
+  </g>
+
+  <!-- Right Side: 'parv' Devanagari-style Text & 'INFOSOFT' -->
+  <g transform="translate(170, 0)">
+    <!-- Devanagari Top Horizontal Line (Shirorekha) -->
+    <line x1="25" y1="210" x2="285" y2="210" stroke="#113f67" stroke-width="8" stroke-linecap="square" />
+    
+    <!-- English letters in Hindi Style ('parv') -->
+    <!-- 'p' -->
+    <path d="M 45 210 L 45 270 C 45 285, 65 285, 65 270 L 65 210" fill="none" stroke="#113f67" stroke-width="9" stroke-linecap="square" stroke-linejoin="round" />
+    <path d="M 45 245 L 65 245" stroke="#113f67" stroke-width="9" stroke-linecap="square" />
+    <line x1="65" y1="210" x2="65" y2="295" stroke="#113f67" stroke-width="9" stroke-linecap="square" />
+
+    <!-- 'a' -->
+    <path d="M 90 240 C 90 225, 115 225, 115 240 L 115 295" fill="none" stroke="#113f67" stroke-width="9" stroke-linecap="square" stroke-linejoin="round" />
+    <path d="M 90 240 C 90 260, 115 260, 115 260" fill="none" stroke="#113f67" stroke-width="9" stroke-linejoin="round" />
+    <line x1="90" y1="260" x2="90" y2="295" stroke="#113f67" stroke-width="9" stroke-linecap="square" />
+
+    <!-- 'r' -->
+    <path d="M 140 210 L 140 295" stroke="#113f67" stroke-width="9" stroke-linecap="square" />
+    <path d="M 140 235 C 150 220, 168 220, 168 240 L 168 295" fill="none" stroke="#113f67" stroke-width="9" stroke-linecap="square" stroke-linejoin="round" />
+
+    <!-- 'v' with top swoop -->
+    <path d="M 195 210 
+             L 210 270 
+             C 215 290, 230 290, 235 270 
+             L 250 210" fill="none" stroke="#113f67" stroke-width="9" stroke-linecap="square" stroke-linejoin="round" />
+    <!-- Swoop curling back from right top of v -->
+    <path d="M 250 210 C 255 190, 275 185, 270 212 C 265 235, 235 225, 235 225" fill="none" stroke="#113f67" stroke-width="7" stroke-linecap="round" />
+
+    <!-- INFOSOFT Text -->
+    <text x="30" y="340" font-family="'Montserrat', 'Helvetica', 'Arial', sans-serif" font-weight="800" font-size="28" fill="#1e6091" letter-spacing="11">INF</text>
+    
+    <!-- O with globe/gear icon -->
+    <g transform="translate(133, 318)">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="#1e6091" stroke-width="4.5" />
+      <line x1="12" y1="2" x2="12" y2="22" stroke="#1e6091" stroke-width="2.5" />
+      <line x1="2" y1="12" x2="22" y2="12" stroke="#1e6091" stroke-width="2.5" />
+      <!-- Diagonal ticks to represent a gear/globe grid -->
+      <line x1="5" y1="5" x2="19" y2="19" stroke="#1e6091" stroke-width="2" />
+      <line x1="5" y1="19" x2="19" y2="5" stroke="#1e6091" stroke-width="2" />
+    </g>
+    
+    <text x="168" y="340" font-family="'Montserrat', 'Helvetica', 'Arial', sans-serif" font-weight="800" font-size="28" fill="#1e6091" letter-spacing="11">SOFT</text>
+
+    <!-- Bottom Line under INFOSOFT -->
+    <line x1="25" y1="355" x2="280" y2="355" stroke="#113f67" stroke-width="3" />
+  </g>
+</svg>

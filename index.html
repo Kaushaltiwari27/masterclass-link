@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Mastery Kickstart | 2-Day Free AI Masterclass by Parv Infosoft</title>
+  <meta name="description" content="Join our FREE 2-Day Live AI Masterclass on May 30-31, 2026, and learn how to use AI to work smarter, learn faster, and stay ahead. No coding required.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Navigation Bar (Visitor view: no admin links) -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" id="nav-logo-link">
+        <span>Parv Infosoft</span>
+      </a>
+      <div class="nav-links">
+        <a href="#hero" class="nav-link-item active">Home</a>
+        <a href="#why" class="nav-link-item">Why AI?</a>
+        <a href="#curriculum" class="nav-link-item">Curriculum</a>
+        <a href="#audience" class="nav-link-item">Who Should Attend</a>
+      </div>
+      <div class="nav-cta">
+        <div class="nav-info-badge">
+          <span class="pulse"></span>
+          <span>Free Access Batch</span>
+        </div>
+        <a href="#register" class="btn-primary-sm" id="nav-cta-btn">Reserve Seat</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dynamic Toast Container -->
+  <div class="toast-container" id="toast-holder"></div>
+
+  <!-- Confetti Canvas For Success Celebrations -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Sticky Mobile CTA Footer Overlay -->
+  <div class="sticky-mobile-cta" id="mobile-sticky-cta">
+    <div class="cta-text">
+      <h4>AI Mastery Kickstart</h4>
+      <p>Limited Free Seats Left!</p>
+    </div>
+    <a href="#register" class="btn-cta-mobile">Reserve My Seat</a>
+  </div>
+
+  <!-- MAIN LANDING VIEW -->
+  <main id="landing-view">
+    
+    <!-- Urgency Notice Banner - Infinite CSS Marquee -->
+    <div class="urgency-banner" style="margin-top: 4.7rem;">
+      <div class="marquee-wrapper">
+        <div class="marquee-content">
+          <span>⚠️ <span class="urgency-badge">Urgent Notice</span> Free spots for this batch are filling up fast!</span>
+          <span>⏰ Registration Required to receive meeting credentials.</span>
+          <span>🔥 Free Access For This Batch Only</span>
+          <!-- Duplicate contents for a seamless loop -->
+          <span>⚠️ <span class="urgency-badge">Urgent Notice</span> Free spots for this batch are filling up fast!</span>
+          <span>⏰ Registration Required to receive meeting credentials.</span>
+          <span>🔥 Free Access For This Batch Only</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="hero-tag">
+              <span>🚀</span> AI Mastery Kickstart
+            </div>
+            <h1 class="hero-title">Your First Step Into <br><span class="gradient-text">The Future With AI</span></h1>
+            
+            <p class="hero-subtitle">
+              Join our <strong>FREE 2-Day Live AI Masterclass</strong> and discover how students, professionals, freelancers, and business owners are using AI to work smarter, learn faster, and stay ahead in 2026.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#register" class="btn-primary-large" id="hero-cta-btn">
+                <span>Reserve My Free Seat</span>
+                <span>➔</span>
+              </a>
+              <div class="trust-badge">
+                <span class="stars">★★★★★</span>
+                <span>Trusted by aspiring professionals & learners</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-visual-card glass">
+              <img src="hero_ai_innovation.png" alt="AI Innovation illustration" class="hero-img">
+              <div class="hero-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Countdown Timer -->
+        <div class="countdown-container glass" id="countdown-timer">
+          <div class="countdown-title">Masterclass Seat Reservation Closes In</div>
+          <div class="countdown-grid">
+            <div class="countdown-box">
+              <span class="countdown-number" id="days">04</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-number" id="hours">22</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-number" id="minutes">14</span>
+              <span class="countdown-label">Mins</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-number" id="seconds">58</span>
+              <span class="countdown-label">Secs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Details Row -->
+        <div class="event-info-cards">
+          <div class="info-card glass">
+            <div class="icon">📅</div>
+            <h4>Saturday Date</h4>
+            <p>30 May 2026</p>
+          </div>
+          <div class="info-card glass">
+            <div class="icon">📅</div>
+            <h4>Sunday Date</h4>
+            <p>31 May 2026</p>
+          </div>
+          <div class="info-card glass">
+            <div class="icon">⏰</div>
+            <h4>New Timings</h4>
+            <p>3:00 PM – 4:00 PM IST</p>
+          </div>
+          <div class="info-card glass">
+            <div class="icon">🌐</div>
+            <h4>Meeting Platform</h4>
+            <p>Google Meet</p>
+          </div>
+        </div>
+
+        <!-- Conversion Optimization Badges -->
+        <div class="trust-badges-grid">
+          <div class="trust-badge-item">
+            <span class="icon">✓</span>
+            <span class="text">Live Interactive Session</span>
+          </div>
+          <div class="trust-badge-item">
+            <span class="icon">✓</span>
+            <span class="text">Beginner Friendly</span>
+          </div>
+          <div class="trust-badge-item">
+            <span class="icon">✓</span>
+            <span class="text">Practical Learning</span>
+          </div>
+          <div class="trust-badge-item">
+            <span class="icon">✓</span>
+            <span class="text">Free Registration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHY THIS MASTERCLASS -->
+    <section id="why" class="why-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">The Shift</span>
+          <h2 class="section-title">AI Is No Longer Optional</h2>
+          <p class="section-subtitle">Just like computers transformed the world 20 years ago, AI is transforming it today. The people who understand AI today will have a massive advantage tomorrow.</p>
+        </div>
+
+        <div class="benefits-layout">
+          <div class="benefits-text">
+            <p>AI is moving faster than any technology in human history. It is rewriting job descriptions, reshaping industries, and automating routine tasks.</p>
+            <p>This masterclass is specifically structured to bridge the gap between technical complexity and everyday utility. We don't teach coding; we teach leverage.</p>
+            
+            <div class="no-tech-box">
+              <div><span>💡</span> No coding required.</div>
+              <div><span>🛠️</span> No technical background required.</div>
+              <div><span>🔥</span> Just curiosity and a willingness to learn.</div>
+            </div>
+          </div>
+
+          <div class="benefits-grid">
+            <div class="benefit-item glass">
+              <div class="benefit-icon">✓</div>
+              <div class="benefit-content">
+                <h4>Understand AI without technical jargon</h4>
+                <p>We explain complex concepts in plain, conversational English.</p>
+              </div>
+            </div>
+            <div class="benefit-item glass">
+              <div class="benefit-icon">✓</div>
+              <div class="benefit-content">
+                <h4>Learn practical AI applications</h4>
+                <p>See step-by-step demonstrations of real tools you can use immediately.</p>
+              </div>
+            </div>
+            <div class="benefit-item glass">
+              <div class="benefit-icon">✓</div>
+              <div class="benefit-content">
+                <h4>Improve productivity using AI</h4>
+                <p>Automate tedious workloads and reclaim hours of your time every day.</p>
+              </div>
+            </div>
+            <div class="benefit-item glass">
+              <div class="benefit-icon">✓</div>
+              <div class="benefit-content">
+                <h4>Discover AI career opportunities</h4>
+                <p>Uncover high-paying roles that didn't even exist twelve months ago.</p>
+              </div>
+            </div>
+            <div class="benefit-item glass">
+              <div class="benefit-icon">✓</div>
+              <div class="benefit-content">
+                <h4>Get a clear roadmap for the future</h4>
+                <p>Obtain a step-by-step path to remain highly competitive through 2026.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ABOUT PARV INFOSOFT -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-card glass">
+          <div class="about-visual-wrapper">
+            <div class="about-visual-card glass">
+              <img src="about_learning_ready.png" alt="AI Mastery Learning Ready organizer graphic" class="about-img">
+              <div class="about-visual-glow"></div>
+            </div>
+          </div>
+          <div class="about-content">
+            <div class="about-brand-header">
+              <div class="about-brand-text">
+                <span class="section-tag">About Organiser</span>
+                <h3>Building The Next Generation Of AI-Ready Professionals</h3>
+              </div>
+            </div>
+            <p>
+              At <strong>Parv Infosoft</strong>, we believe AI is becoming a fundamental skill for every student, professional, entrepreneur, and business owner.
+            </p>
+            <p>
+              Whether you are a student exploring new opportunities, a professional looking to stay competitive, or a business owner trying to work smarter, our programs are designed to help you grow with AI. We focus on practical learning, industry-relevant skills, and real-world implementation that creates actual results.
+            </p>
+            <div class="about-mission">
+              <h4>Our Mission</h4>
+              <blockquote>"Help People Become AI-Ready For The Future."</blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 & 5: WHAT YOU WILL LEARN -->
+    <section id="curriculum" class="curriculum-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">The Curriculum</span>
+          <h2 class="section-title">What You Will Learn</h2>
+          <p class="section-subtitle">A carefully structured 2-day roadmap to take you from a complete beginner to an empowered AI user.</p>
+        </div>
+
+        <!-- Interactive Tab Switches -->
+        <div class="curriculum-tabs-nav">
+          <button class="tab-btn active" data-tab="day1" id="tab-btn-day1">Day 1: AI Foundations</button>
+          <button class="tab-btn" data-tab="day2" id="tab-btn-day2">Day 2: AI Workflows</button>
+        </div>
+
+        <!-- DAY 1 CONTENT -->
+        <div id="day1" class="curriculum-content active">
+          <div class="curriculum-layout">
+            <div class="curriculum-modules-column">
+              <div class="curriculum-grid">
+                <!-- Module 1 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 1</span>
+                  <h4>Understanding AI Demystified</h4>
+                  <p>What AI really is and how it works, explained entirely without technical jargon.</p>
+                </div>
+                <!-- Module 2 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 2</span>
+                  <h4>AI Myths vs Reality</h4>
+                  <p>Separate the sci-fi fearmongering from actual productive reality in 2026.</p>
+                </div>
+                <!-- Module 3 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 3</span>
+                  <h4>Top Essential AI Tools</h4>
+                  <p>The definitive list of AI software and platforms that everyone should know.</p>
+                </div>
+                <!-- Module 4 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 4</span>
+                  <h4>Effective ChatGPT Mastery</h4>
+                  <p>Learn how to command LLMs to get exactly what you want on the first try.</p>
+                </div>
+                <!-- Module 5 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 5</span>
+                  <h4>Prompting Frameworks</h4>
+                  <p>Master professional prompting structures that yield elite, clean results.</p>
+                </div>
+                <!-- Module 6 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 6</span>
+                  <h4>AI for Daily Productivity</h4>
+                  <p>Save hours on writing emails, organizing schedules, and summarizing information.</p>
+                </div>
+                <!-- Module 7 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 7</span>
+                  <h4>AI for Faster Learning</h4>
+                  <p>Transform AI into a private, 24/7 personalized tutor for any subject on earth.</p>
+                </div>
+                <!-- Module 8 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 8</span>
+                  <h4>AI for Career Growth</h4>
+                  <p>Position yourself as the high-leverage "AI champion" within your organization.</p>
+                </div>
+              </div>
+            </div>
+            <div class="curriculum-sidebar-column">
+              <div class="curriculum-banner-card glass">
+                <img src="curriculum_day1_basics.png" alt="AI Foundations and ChatGPT Masterclass Day 1 image" class="curriculum-banner-img">
+                <div class="curriculum-banner-glow"></div>
+              </div>
+              <div class="curriculum-summary">
+                <h4>By The End Of Day 1, You Will:</h4>
+                <div class="summary-bullets">
+                  <div class="summary-item"><span class="check">✓</span> <span>Understand AI fundamentals clearly</span></div>
+                  <div class="summary-item"><span class="check">✓</span> <span>Use ChatGPT with expert-level frameworks</span></div>
+                  <div class="summary-item"><span class="check">✓</span> <span>Save hours using modern AI tools</span></div>
+                  <div class="summary-item"><span class="check">✓</span> <span>Apply AI seamlessly in daily routines</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAY 2 CONTENT -->
+        <div id="day2" class="curriculum-content">
+          <div class="curriculum-layout">
+            <div class="curriculum-modules-column">
+              <div class="curriculum-grid">
+                <!-- Module 1 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 1</span>
+                  <h4>Real Business Use Cases</h4>
+                  <p>Analyze how modern companies are integrating AI to lower overhead and scale.</p>
+                </div>
+                <!-- Module 2 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 2</span>
+                  <h4>How Professionals Leverage AI</h4>
+                  <p>Real-life case studies of employees using AI to multiply their output value.</p>
+                </div>
+                <!-- Module 3 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 3</span>
+                  <h4>Freelancer Superpowers</h4>
+                  <p>Write copies, design graphics, and build websites at 10x speeds using AI assistance.</p>
+                </div>
+                <!-- Module 4 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 4</span>
+                  <h4>Introduction to AI Workflows</h4>
+                  <p>Learn how to daisy-chain AI tools together to complete compound tasks.</p>
+                </div>
+                <!-- Module 5 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 5</span>
+                  <h4>Understanding AI Automation</h4>
+                  <p>Introduction to how systems trigger tasks automatically based on user prompts.</p>
+                </div>
+                <!-- Module 6 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 6</span>
+                  <h4>Introduction to AI Agents</h4>
+                  <p>Understand the future of autonomous software agents that execute full goals.</p>
+                </div>
+                <!-- Module 7 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 7</span>
+                  <h4>Career Pathways in AI</h4>
+                  <p>Explore specialized job vacancies focusing on AI alignment and prompt engineering.</p>
+                </div>
+                <!-- Module 8 -->
+                <div class="module-card glass">
+                  <span class="module-badge">Module 8</span>
+                  <h4>Your 2026 Learning Roadmap</h4>
+                  <p>Receive a clear, actionable guide on what to learn next to remain ahead.</p>
+                </div>
+              </div>
+            </div>
+            <div class="curriculum-sidebar-column">
+              <div class="curriculum-banner-card glass">
+                <img src="curriculum_day2_agents.png" alt="AI Workflows and automation masterclass Day 2 image" class="curriculum-banner-img">
+                <div class="curriculum-banner-glow"></div>
+              </div>
+              <div class="curriculum-summary">
+                <h4>By The End Of Day 2, You Will:</h4>
+                <div class="summary-bullets">
+                  <div class="summary-item"><span class="check">✓</span> <span>Understand AI automation opportunities</span></div>
+                  <div class="summary-item"><span class="check">✓</span> <span>Identify and adapt future-ready skills</span></div>
+                  <div class="summary-item"><span class="check">✓</span> <span>Discover high-paying AI career pathways</span></div>
+                  <div class="summary-item"><span class="check">✓</span> <span>Have a clear direction on what to study next</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+          <p style="color: var(--warning); font-weight: 700; margin-bottom: 1rem; font-size: 0.95rem;">⚠️ Limited Live Seats Available — Join the next batch now!</p>
+          <a href="#register" class="btn-primary-large" id="curriculum-cta-btn">
+            <span>Reserve My Free Seat</span>
+            <span>➔</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: WHO SHOULD ATTEND -->
+    <section id="audience" class="audience-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Who is it for?</span>
+          <h2 class="section-title">This Masterclass Is Perfect For:</h2>
+          <p class="section-subtitle">No matter your industry or current skillset, AI can act as your personal force multiplier.</p>
+        </div>
+
+        <div class="attend-grid">
+          <div class="attend-card glass">
+            <span class="emoji">🎓</span>
+            <h4>Students</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">💼</span>
+            <h4>Working Professionals</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">🚀</span>
+            <h4>Entrepreneurs</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">💻</span>
+            <h4>Freelancers</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">📈</span>
+            <h4>Business Owners</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">📱</span>
+            <h4>Content Creators</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">🎯</span>
+            <h4>Job Seekers</h4>
+          </div>
+          <div class="attend-card glass">
+            <span class="emoji">🤖</span>
+            <h4>Curious Learners</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: WHAT MAKES THIS DIFFERENT -->
+    <section id="different" class="different-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">The Difference</span>
+          <h2 class="section-title">Most People Learn AI The Wrong Way</h2>
+          <p class="section-subtitle">They jump from one YouTube video to another, one tool to another, one trend to another, and still remain confused. Here is how we do it differently.</p>
+        </div>
+
+        <div class="comparison-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Focus Area</th>
+                <th>The Confusing "Wrong" Way</th>
+                <th>Our Structured Masterclass</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Learning Style</strong></td>
+                <td class="wrong-way"><span class="cross-bullet">✗</span> Scattered YouTube clips & random guides</td>
+                <td class="our-way"><span class="check-bullet">✓</span> Clear foundation & step-by-step lectures</td>
+              </tr>
+              <tr>
+                <td><strong>Core Theory</strong></td>
+                <td class="wrong-way"><span class="cross-bullet">✗</span> Unstructured hype or complex math equations</td>
+                <td class="our-way"><span class="check-bullet">✓</span> Real-world use cases & practical prompts</td>
+              </tr>
+              <tr>
+                <td><strong>Hands-on Practice</strong></td>
+                <td class="wrong-way"><span class="cross-bullet">✗</span> Scrolling social media threads of cool features</td>
+                <td class="our-way"><span class="check-bullet">✓</span> Live demonstrations of tools during sessions</td>
+              </tr>
+              <tr>
+                <td><strong>Future Path</strong></td>
+                <td class="wrong-way"><span class="cross-bullet">✗</span> Feeling overwhelmed by endless daily tool releases</td>
+                <td class="our-way"><span class="check-bullet">✓</span> Structured roadmap to guide you in 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Mentorship</strong></td>
+                <td class="wrong-way"><span class="cross-bullet">✗</span> Self-teaching in complete isolation</td>
+                <td class="our-way"><span class="check-bullet">✓</span> Direct guidance from industry professionals</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: FREE BONUSES -->
+    <section id="bonuses" class="bonuses-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Value Stack</span>
+          <h2 class="section-title">Register Today & Get Exclusive Bonuses</h2>
+          <p class="section-subtitle">Claim these premium resource packages for free immediately after securing your masterclass seat.</p>
+        </div>
+
+        <div class="bonuses-layout">
+          <div class="bonuses-visual-column">
+            <div class="bonuses-mockup-card glass">
+              <img src="bonuses_mockup_gifts.png" alt="Exclusive Bonuses Stack Mockup" class="bonuses-mockup-img">
+              <div class="bonuses-mockup-glow"></div>
+            </div>
+          </div>
+          <div class="bonuses-list-column">
+            <div class="bonuses-grid">
+              <!-- Bonus 1 -->
+              <div class="bonus-card glass">
+                <span class="bonus-gift">🎁</span>
+                <h4>AI Beginner Toolkit</h4>
+                <p>A handpicked set of template sheets to kickstart your daily AI work.</p>
+              </div>
+              <!-- Bonus 2 -->
+              <div class="bonus-card glass">
+                <span class="bonus-gift">🎁</span>
+                <h4>Prompt Cheat Sheet</h4>
+                <p>Cut and paste prompt formulas for marketing, coding, writing, and spreadsheets.</p>
+              </div>
+              <!-- Bonus 3 -->
+              <div class="bonus-card glass">
+                <span class="bonus-gift">🎁</span>
+                <h4>AI Resource Guide</h4>
+                <p>Our database of the top AI apps, Chrome extensions, and research hubs.</p>
+              </div>
+              <!-- Bonus 4 -->
+              <div class="bonus-card glass">
+                <span class="bonus-gift">🎁</span>
+                <h4>Learning Roadmap PDF</h4>
+                <p>A printable visual flow chart showing the best skills to learn step-by-step.</p>
+              </div>
+              <!-- Bonus 5 -->
+              <div class="bonus-card glass">
+                <span class="bonus-gift">🎁</span>
+                <h4>Participation Certificate</h4>
+                <p>Earn a verified digital certificate to proudly share on your LinkedIn CV.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: WHAT THIS MASTERCLASS IS NOT -->
+    <section id="not-this" class="not-this-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Transparency</span>
+          <h2 class="section-title">Setting Clear Expectations</h2>
+          <p class="section-subtitle">We believe in being 100% upfront about what this program is and what it is not.</p>
+        </div>
+
+        <div class="is-not-container">
+          <!-- Left side: What it is not -->
+          <div class="is-not-card red-side glass">
+            <h3><span>❌</span> This Masterclass is NOT:</h3>
+            <ul class="is-not-list">
+              <li>
+                <span class="bullet">❌</span>
+                <span><strong>A coding bootcamp</strong> (We won't write Javascript, Python, or C++ scripts).</span>
+              </li>
+              <li>
+                <span class="bullet">❌</span>
+                <span><strong>An advanced engineering workshop</strong> (No complex tensor models or machine training).</span>
+              </li>
+              <li>
+                <span class="bullet">❌</span>
+                <span><strong>A highly technical implementation program</strong> (We avoid backend cloud API server setups).</span>
+              </li>
+              <li>
+                <span class="bullet">❌</span>
+                <span><strong>A complete AI automation course</strong> (We cover core concepts, not full-scale enterprise software dev).</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right side: What it is -->
+          <div class="is-not-card green-side glass">
+            <h3><span>✅</span> This Masterclass IS:</h3>
+            <ul class="is-not-list">
+              <li>
+                <span class="bullet">✅</span>
+                <span><strong>Beginner Friendly</strong> (Designed specifically for learners with zero tech skills).</span>
+              </li>
+              <li>
+                <span class="bullet">✅</span>
+                <span><strong>Practical</strong> (We focus entirely on workflows you can copy and use immediately).</span>
+              </li>
+              <li>
+                <span class="bullet">✅</span>
+                <span><strong>Easy to Understand</strong> (Clear, concise breakdowns devoid of confusing industry jargon).</span>
+              </li>
+              <li>
+                <span class="bullet">✅</span>
+                <span><strong>Focused on Real Applications</strong> (Learn how to use AI for emails, studies, projects, and work).</span>
+              </li>
+              <li>
+                <span class="bullet">✅</span>
+                <span><strong>Designed to Give Clarity</strong> (Finally cut through the noise and build a clear future roadmap).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: TESTIMONIALS (Needs) -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Learner Demands</span>
+          <h2 class="section-title">What Learners Tell Us They Want</h2>
+          <p class="section-subtitle">We listened to thousands of students and professionals. Here is what they are looking for.</p>
+        </div>
+
+        <div class="needs-grid">
+          <div class="need-bubble-container">
+            <div class="need-bubble">
+              <p>I want to understand AI without getting overwhelmed by a thousand tools released every week.</p>
+            </div>
+            <div class="need-bubble-author">— Job Seeker</div>
+          </div>
+          
+          <div class="need-bubble-container">
+            <div class="need-bubble">
+              <p>I want to know which AI skills are actually worth learning for my career instead of wasting time on hypes.</p>
+            </div>
+            <div class="need-bubble-author">— Corporate Executive</div>
+          </div>
+
+          <div class="need-bubble-container">
+            <div class="need-bubble">
+              <p>I want practical guidance, step-by-step demonstrations, not just abstract theories or lecture slides.</p>
+            </div>
+            <div class="need-bubble-author">— Freelance Designer</div>
+          </div>
+
+          <div class="need-bubble-container">
+            <div class="need-bubble">
+              <p>I want a clear, solid roadmap for my future so I know how to upskill next year without getting left behind.</p>
+            </div>
+            <div class="need-bubble-author">— Engineering Graduate</div>
+          </div>
+        </div>
+
+        <div class="testimonial-banner glass">
+          <h4>If this sounds like you, this masterclass is exactly what you need.</h4>
+          <p>We designed the curriculum to address these exact needs directly, focusing on practical skills and future security.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: REGISTRATION FORM -->
+    <section id="register" class="register-section">
+      <div class="container">
+        <div class="form-wrapper glass" id="register-card">
+          <div class="form-header">
+            <h3>Reserve Your Free Seat</h3>
+            <p>Enter details below to claim your free masterclass entry credentials. Limited seats available!</p>
+          </div>
+
+          <!-- Registration Form -->
+          <form id="registration-form" novalidate>
+            <div class="form-grid">
+              
+              <!-- Full Name (Required) -->
+              <div class="form-field" id="field-name">
+                <label for="reg-name">Full Name <span class="required">*</span></label>
+                <input type="text" id="reg-name" placeholder="John Doe" required>
+                <span class="error-text" id="error-name">Please enter your full name.</span>
+              </div>
+
+              <!-- Email Address (Required) -->
+              <div class="form-field" id="field-email">
+                <label for="reg-email">Email Address <span class="required">*</span></label>
+                <input type="email" id="reg-email" placeholder="john@example.com" required>
+                <span class="error-text" id="error-email">Please enter a valid email address.</span>
+              </div>
+
+              <!-- Mobile Number (Required) -->
+              <div class="form-field" id="field-mobile">
+                <label for="reg-mobile">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="reg-mobile" placeholder="9876543210" required>
+                <span class="error-text" id="error-mobile">Please enter a valid 10-digit mobile number.</span>
+              </div>
+
+              <!-- Profession (Required) -->
+              <div class="form-field" id="field-profession">
+                <label for="reg-profession">Profession <span class="required">*</span></label>
+                <input type="text" id="reg-profession" placeholder="Student, Manager, Business Owner, Freelancer" required>
+                <span class="error-text" id="error-profession">Please enter your current profession.</span>
+              </div>
+
+              <!-- City (Optional) -->
+              <div class="form-field" id="field-city">
+                <label for="reg-city">City</label>
+                <input type="text" id="reg-city" placeholder="Mumbai, Delhi, Bangalore">
+              </div>
+
+              <!-- Goal with AI (Dropdown) -->
+              <div class="form-field" id="field-intent">
+                <label for="reg-intent">Primary Goal With AI</label>
+                <select id="reg-intent">
+                  <option value="Productivity" selected>Productivity Integration</option>
+                  <option value="Career Growth">Career Growth & Upskilling</option>
+                  <option value="Freelancing">Freelancing Revenue</option>
+                  <option value="Business Growth">Business Growth & Automation</option>
+                  <option value="Content Creation">Content Creation</option>
+                  <option value="Just Exploring">Just Exploring AI Limits</option>
+                </select>
+              </div>
+
+            </div>
+
+            <button type="submit" class="btn-submit" id="btn-submit-form">Reserve My Free Seat</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: FINAL CTA -->
+    <section id="final-cta" class="final-cta-section">
+      <div class="container">
+        <div class="final-cta-card glass">
+          <h2>The Future Belongs To <br><span class="gradient-text">Those Who Understand AI</span></h2>
+          <p>Don't wait until everyone else has already started. Start learning now. Start building now. Start preparing now.</p>
+          
+          <div style="margin-top: 1rem;">
+            <a href="#register" class="btn-primary-large" id="final-cta-btn">
+              <span>🚀 Reserve My Free Seat</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUCCESS PAGE / THANK YOU VIEW (Initially Hidden) -->
+  <main id="thank-you-view">
+    <div class="container">
+      <div class="thank-you-card glass">
+        <div class="success-ring">🎉</div>
+        <h1 class="thank-you-title" style="color: var(--success);">Registration Successful!</h1>
+        <p class="thank-you-subtitle">
+          Your seat for the FREE 2-Day AI Masterclass has been reserved.
+        </p>
+
+        <div class="event-details-box">
+          <div class="event-detail-item">
+            <span class="emoji">📅</span>
+            <strong>30 May 2026 (Saturday)</strong>
+          </div>
+          <div class="event-detail-item">
+            <span class="emoji">📅</span>
+            <strong>31 May 2026 (Sunday)</strong>
+          </div>
+          <div class="event-detail-item">
+            <span class="emoji">⏰</span>
+            <strong>3:00 PM – 4:00 PM IST</strong>
+          </div>
+          <div class="event-detail-item">
+            <span class="emoji">🌐</span>
+            <strong>Platform:</strong> Google Meet
+          </div>
+          <div class="event-detail-item">
+            <span class="emoji">🔗</span>
+            <strong>Link:</strong> <a href="https://meet.google.com/dyt-syon-hva" target="_blank" style="color: var(--teal); text-decoration: underline;">meet.google.com/dyt-syon-hva</a>
+          </div>
+          <div class="event-detail-item">
+            <span class="emoji">📌</span>
+            <strong>Code:</strong> <code>dyt-syon-hva</code>
+          </div>
+        </div>
+
+        <div class="inbox-alert-box">
+          <h4>📧 Automated Confirmation Dispatched!</h4>
+          <p>Check your email (<strong><span id="user-display-email">your email</span></strong>) for joining instructions and event details. Please verify your:</p>
+          <ul>
+            <li>Primary Inbox 📩</li>
+            <li>Promotions Tab 📩</li>
+            <li>Spam / Junk folder (mark as "Not Spam" to enable direct links)</li>
+          </ul>
+        </div>
+
+        <p style="font-weight: 500; font-size: 1.1rem; color: var(--text-main); margin-bottom: 2rem;">
+          We look forward to seeing you inside the session!
+        </p>
+        
+        <p style="color: var(--teal); font-weight: 700; font-size: 1.05rem;">
+          Team Parv Infosoft 🚀
+        </p>
+
+        <div style="margin-top: 2rem;">
+          <button id="btn-back-home" class="btn-primary-sm" style="padding: 0.75rem 2rem;">Back to Main Page</button>
+        </div>
+      </div>
+
+      <!-- SIMULATED EMAIL INBOX PREVIEW -->
+      <div class="email-preview-container">
+        <div class="email-preview-title">
+          <span>📬</span> Simulated Inbox: Automated Confirmation Received
+        </div>
+        
+        <div class="email-inbox-frame">
+          <div class="email-inbox-header">
+            <div class="header-dot red"></div>
+            <div class="header-dot yellow"></div>
+            <div class="header-dot green"></div>
+            <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 0.5rem; font-family: monospace;">inbox-simulator@parvinfosoft.com</span>
+          </div>
+
+          <div class="email-inbox-subject">
+            Subject: 🚀 Your Seat Is Confirmed - AI Mastery Kickstart
+          </div>
+
+          <div class="email-inbox-meta">
+            <div>
+              <span>From: <strong>Team Parv Infosoft</strong> &lt;parvinfosoftadmin@gmail.com&gt;</span><br>
+              <span>To: <strong id="email-preview-to-name">John Doe</strong> &lt;<span id="email-preview-to-email">john@example.com</span>&gt;</span>
+            </div>
+            <div style="text-align: right;">
+              <span>Date: Today (25 May 2026)</span><br>
+              <span>Time: 3:00 PM IST (Auto-sent)</span>
+            </div>
+          </div>
+
+          <div class="email-inbox-body">
+            <p>Hi <strong id="email-user-name">{{Name}}</strong>,</p>
+            <br>
+            <p>Thank you for registering for Parv Infosoft's FREE 2-Day AI Masterclass.</p>
+            <p>Your registration has been successfully confirmed.</p>
+            
+            <div class="email-card-box">
+              <h3>📅 Event Dates</h3>
+              <p>30 May 2026 (Saturday)</p>
+              <p>31 May 2026 (Sunday)</p>
+              
+              <h3 style="margin-top: 1rem;">⏰ Time</h3>
+              <p>3:00 PM – 4:00 PM IST</p>
+
+              <h3 style="margin-top: 1rem;">🌐 Platform</h3>
+              <p>Google Meet</p>
+
+              <h3 style="margin-top: 1rem;">🔗 Meeting Link</h3>
+              <p><a href="https://meet.google.com/dyt-syon-hva" target="_blank" style="color: #2563eb; text-decoration: underline;">https://meet.google.com/dyt-syon-hva</a></p>
+
+              <h3 style="margin-top: 1rem;">📌 Meeting Code</h3>
+              <p><code>dyt-syon-hva</code></p>
+            </div>
+
+            <p><strong>What You'll Learn:</strong></p>
+            <ul class="email-bullet-list">
+              <li>AI Fundamentals</li>
+              <li>Practical AI Tools</li>
+              <li>Better Prompting Techniques</li>
+              <li>AI Productivity Strategies</li>
+              <li>Career Opportunities In AI</li>
+              <li>AI Learning Roadmap</li>
+            </ul>
+
+            <p>Please save this email and join 5 minutes before the session begins.</p>
+            <p>We look forward to seeing you.</p>
+            
+            <div class="email-signoff">
+              <p>Regards,</p>
+              <br>
+              <p><strong>Team Parv Infosoft</strong></p>
+              <p style="color: #64748b; font-size: 0.95rem; font-weight: 500;"><a href="mailto:parvinfosoftadmin@gmail.com">parvinfosoftadmin@gmail.com</a></p>
+              <p style="color: #64748b; font-size: 0.9rem; font-weight: 600; margin-top: 0.25rem;">Learn. Grow. Lead With AI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-main);">AI Mastery Kickstart</span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Parv Infosoft. All rights reserved. | 🚀 Empowering AI-Ready Professionals
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="app.js?v=1.0.4"></script>
+</body>
+</html>
