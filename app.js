@@ -263,8 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initConfetti();
 
         // 6. Track Lead event in Meta Pixel
-        if (typeof MetaPixel !== 'undefined') {
-          MetaPixel.trackEvent('Lead', {
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead', {
             content_name: 'AI Masterclass Registration',
             status: 'Success'
           });

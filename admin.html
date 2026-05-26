@@ -5,15 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard | AI Mastery Kickstart</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Meta Pixel Configuration and Script -->
+  <!-- Meta Pixel Code -->
   <script src="meta-pixel-config.js"></script>
-  <script src="meta-pixel.js"></script>
   <script>
-    if (typeof MetaPixel !== 'undefined') {
-      MetaPixel.initMetaPixel();
-      MetaPixel.trackEvent('PageView');
-    }
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    var pixelId = window.NEXT_PUBLIC_META_PIXEL_ID || '740056559170783';
+    fbq('init', pixelId);
+    fbq('track', 'PageView');
   </script>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
   <!-- Meta Pixel Noscript -->
