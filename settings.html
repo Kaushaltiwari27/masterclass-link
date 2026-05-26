@@ -5,8 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Integration Settings | AI Mastery Kickstart Admin</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Meta Pixel Configuration and Script -->
+  <script src="meta-pixel-config.js"></script>
+  <script src="meta-pixel.js"></script>
+  <script>
+    if (typeof MetaPixel !== 'undefined') {
+      MetaPixel.initMetaPixel();
+      MetaPixel.trackEvent('PageView');
+    }
+  </script>
 </head>
 <body>
+  <!-- Meta Pixel Noscript -->
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
 
   <!-- Navigation Bar (Administrative Panel) -->
   <nav class="navbar">

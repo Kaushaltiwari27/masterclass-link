@@ -262,6 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // 5. Fire confetti simulation
         initConfetti();
 
+        // 6. Track Lead event in Meta Pixel
+        if (typeof MetaPixel !== 'undefined') {
+          MetaPixel.trackEvent('Lead', {
+            content_name: 'AI Masterclass Registration',
+            status: 'Success'
+          });
+        }
+
       } else {
         const card = document.getElementById('register-card');
         if (card) {

@@ -1,0 +1,10 @@
+{
+  "name": "masterclass-link",
+  "version": "1.0.0",
+  "description": "AI Mastery Masterclass Landing Page & Settings Panel",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

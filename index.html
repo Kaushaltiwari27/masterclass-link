@@ -6,8 +6,22 @@
   <title>AI Mastery Kickstart | 2-Day Free AI Masterclass by Parv Infosoft</title>
   <meta name="description" content="Join our FREE 2-Day Live AI Masterclass on May 30-31, 2026, and learn how to use AI to work smarter, learn faster, and stay ahead. No coding required.">
   <link rel="stylesheet" href="style.css">
+  <!-- Meta Pixel Configuration and Script -->
+  <script src="meta-pixel-config.js"></script>
+  <script src="meta-pixel.js"></script>
+  <script>
+    if (typeof MetaPixel !== 'undefined') {
+      MetaPixel.initMetaPixel();
+      MetaPixel.trackEvent('PageView');
+      MetaPixel.trackEvent('ViewContent');
+    }
+  </script>
 </head>
 <body>
+  <!-- Meta Pixel Noscript -->
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
 
   <!-- Sticky Navigation Bar (Visitor view: no admin links) -->
   <nav class="navbar">
