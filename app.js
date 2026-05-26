@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('masterclass_registrations', JSON.stringify(localRegs));
 
         // 2. Fetch Webhook URL if configured
-        const webhookUrl = localStorage.getItem('masterclass_webhook') || 'https://script.google.com/macros/s/AKfycbw5Sk-IAHqNqeyisWa3p3cG_DhaYzlNZPrgwHhDZJZH/exec';
+        const webhookUrl = localStorage.getItem('masterclass_webhook') || 'https://script.google.com/macros/s/AKfycbwRf5tZOrvZ5r3JJG1vdvfBQXapj2gpXyrfGQpDaWdyCDS_NQu8W-y579U2VUVmj5NBHw/exec';
 
         if (webhookUrl) {
           fetch(webhookUrl, {
