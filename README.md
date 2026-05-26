@@ -68,6 +68,6 @@ The codebase is built to support dynamic Meta Pixel IDs during Vercel deployment
     ```bash
     npm install
     # Test environment variable injection locally (Powershell)
-    $env:NEXT_PUBLIC_META_PIXEL_ID="740056559170783"; npm run build
+    $env:NEXT_PUBLIC_META_PIXEL_ID=""; npm run build
     ```
     This will compile the production-ready assets into the `public/` directory.
